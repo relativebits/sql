@@ -1,6 +1,13 @@
 ### Insert and Return ID
 ```
-DECLARE inserted_id table.id%TYPE;
-
-INSERT INTO table (column) VALUES ('test') RETURNING id INTO inserted_id;
+DO
+$$
+DECLARE
+    table_id table.id%TYPE;
+    routine_step_id routine_step.id%TYPE;
+BEGIN
+  INSERT INTO table (column) VALUES ('test') RETURNING id INTO table_id;
+END
+$$;
+COMMIT;  
 ```
